@@ -62,7 +62,7 @@ const AddBook = () => {
 						))}
 				</select>
 			</div>
-			<button>Add Book</button>
+			<button>+</button>
 		</form>
 	);
 };
