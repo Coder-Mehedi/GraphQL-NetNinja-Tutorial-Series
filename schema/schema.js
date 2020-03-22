@@ -9,23 +9,24 @@ const {
 	GraphQLString,
 	GraphQLInt,
 	GraphQLID,
-	GraphQLSchema
+	GraphQLSchema,
+	GraphQLNonNull
 } = graphql;
 
-const books = [
-	{ name: "Name of the wind", genre: "Fantasy", id: "1", authorId: "1" },
-	{ name: "The Final Empire", genre: "Fantasy", id: "2", authorId: "2" },
-	{ name: "The Long Earth", genre: "Sci-Fi", id: "3", authorId: "3" },
-	{ name: "The hero of ages", genre: "Fantasy", id: "4", authorId: "2" },
-	{ name: "The colour of magic", genre: "Fantasy", id: "5", authorId: "3" },
-	{ name: "The light fantastic", genre: "Fantasy", id: "6", authorId: "3" }
-];
+// const books = [
+// 	{ name: "Name of the wind", genre: "Fantasy", id: "5e776b2b49c2a62e3885299f", authorId: "5e776a7149c2a62e3885299c" },
+// 	{ name: "The Final Empire", genre: "Fantasy", id: "2", authorId: "5e776ab449c2a62e3885299d" },
+// 	{ name: "The Long Earth", genre: "Sci-Fi", id: "3", authorId: "5e776ad549c2a62e3885299e" },
+// 	{ name: "The hero of ages", genre: "Fantasy", id: "4", authorId: "5e776ab449c2a62e3885299d" },
+// 	{ name: "The colour of magic", genre: "Fantasy", id: "5", authorId: "5e776ad549c2a62e3885299e" },
+// 	{ name: "The light fantastic", genre: "Fantasy", id: "6", authorId: "5e776ad549c2a62e3885299e" }
+// ];
 
-const authors = [
-	{ name: "Patrick Rothfuss", age: 44, id: "1" },
-	{ name: "Brandon Sanderson", age: 42, id: "2" },
-	{ name: "Terry Pratchett", age: 66, id: "3" }
-];
+// const authors = [
+// 	{ name: "Patrick Rothfuss", age: 44, id: "5e776a7149c2a62e3885299c" },
+// 	{ name: "Brandon Sanderson", age: 42, id: "2" },
+// 	{ name: "Terry Pratchett", age: 66, id: "3" }
+// ];
 
 const BookType = new GraphQLObjectType({
 	name: "Book",
@@ -103,8 +104,8 @@ const Mutation = new GraphQLObjectType({
 		addAuthor: {
 			type: AuthorType,
 			args: {
-				name: { type: GraphQLString },
-				age: { type: GraphQLInt }
+				name: { type: GraphQLNonNull(GraphQLString) },
+				age: { type: GraphQLNonNull(GraphQLInt) }
 			},
 			resolve(parent, args) {
 				let author = new Author({
