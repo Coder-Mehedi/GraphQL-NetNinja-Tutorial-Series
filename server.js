@@ -10,7 +10,7 @@ app.use(cors());
 
 mongoose.connect(
 	"mongodb+srv://mehedi:mehedi@mehedi-mw5jy.mongodb.net/test?retryWrites=true&w=majority",
-	{ useUnifiedTopology: true, useNewUrlParser: true },
+	{ useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false },
 	() => console.log("MongoDB Database Connected")
 );
 
